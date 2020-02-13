@@ -29,8 +29,8 @@ class NormalItem(Item, ItemInterface):
         self.setQuality()
         self.checkQuality()
 
-    def show(self):
-        print(self)
+    def getSelf(self):
+        return self
 
     def listItems(self):
         listItems = []
