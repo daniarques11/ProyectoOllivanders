@@ -14,6 +14,7 @@ def main(passedDays):
             tiendaGildedRose.updateQuality()
             tiendaGildedRose.updateRegisterList(tiendaGildedRose.getInventory())
     print(tiendaGildedRose.registerList)
+    print(tiendaGildedRose)
 
 
 if __name__ == "__main__":

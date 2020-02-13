@@ -17,11 +17,14 @@ class GildedRose:
         inventory = []
         for item in self.items:
             itemCopy = copy.deepcopy(item)
-            inventory.append(itemCopy.getSelf())
+            inventory.append(itemCopy.getItemJSon())
         return inventory
 
     def updateRegisterList(self, inventory):
         self.registerList.append(inventory)
 
-    def __repr__(self, passed_days):
-        return self.registerList
+    def __repr__(self):
+        shopRepr = ""
+        for item in self.items:
+            shopRepr = shopRepr + str(item) + "\n"
+        return shopRepr
