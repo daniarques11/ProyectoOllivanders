@@ -1,4 +1,5 @@
 from NormalItem import NormalItem
+import copy
 
 
 class GildedRose:
@@ -9,14 +10,15 @@ class GildedRose:
         self.items = items
 
     def updateQuality(self):
-        for itemClass in self.items:
-            itemClass.updateQuality()
+        for item in self.items:
+            item.updateQuality()
 
     def getInventory(self):
         inventory = []
-        for itemClass in self.items:
-            inventory.append(itemClass.getSelf())
-        return inventory.copy
+        for item in self.items:
+            itemCopy = copy.deepcopy(item)
+            inventory.append(itemCopy.getSelf())
+        return inventory
 
     def updateRegisterList(self, inventory):
         self.registerList.append(inventory)
