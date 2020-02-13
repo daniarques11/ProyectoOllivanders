@@ -63,6 +63,7 @@ Tasca 5.2 - Web Ollivander's wands shop -->
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
             </form>
         </div>
+        
     </nav>
     <!-- FINAL NAVBAR -->
 
@@ -88,7 +89,9 @@ Tasca 5.2 - Web Ollivander's wands shop -->
 
         </table>
     </div>
-
+    <div>
+        {{ shop }}
+    </div>
     <!-- FINAL TABLA -->
 
     <!-- FOOTER -->
@@ -102,7 +105,7 @@ Tasca 5.2 - Web Ollivander's wands shop -->
 
             xmlhttp.onreadystatechange = function() {
               if (this.readyState == 4 && this.status == 200) {
-                var myObj = JSON.parse(this.responseText);
+                var myObj = JSON.parse({{ shop }});
 
                 var taula = document.getElementById("itemsTable");
 

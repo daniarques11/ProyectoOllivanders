@@ -1,5 +1,5 @@
 from app import app, bootstrap
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from GildedRose import GildedRose
 from GildedRose import createObjects
 
@@ -8,8 +8,9 @@ from GildedRose import createObjects
 def index():
     listaInventario = createObjects.createItems()
     tiendaGildedRose = GildedRose.GildedRose(listaInventario)
-    inventoarioJSON = tiendaGildedRose.getInventory()
-    return render_template('index.html', shop=inventoarioJSON)
+    inventarioJSON = {}
+    inventarioJSON["items"] = tiendaGildedRose.getInventory()
+    return render_template('index.html', shop=inventarioJSON)
 
 
 @app.route('/home')
