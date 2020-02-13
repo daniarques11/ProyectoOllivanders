@@ -1,6 +1,7 @@
 venv
-/.vscode
-/.pytest_cache
-/__pycache__
-/app/__pycache__
-/GildedRose/__pycache__
+.vscode
+.pytest_cache
+__pycache__
+app/__pycache__
+GildedRose/__pycache__
+GildedRose/*.pyc

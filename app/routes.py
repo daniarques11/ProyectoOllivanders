@@ -4,11 +4,12 @@ from GildedRose import GildedRose
 from GildedRose import createObjects
 
 
-@app.route('/')
+@app.route('/index')
 def index():
-    listaInventario = createItems()
-    tiendaGildedRose = GildedRose(listaInventario)
-    return render_template('index.html', shop=tiendaGildedRose.getInventory())
+    listaInventario = createObjects.createItems()
+    tiendaGildedRose = GildedRose.GildedRose(listaInventario)
+    inventoarioJSON = tiendaGildedRose.getInventory()
+    return render_template('index.html', shop=inventoarioJSON)
 
 
 @app.route('/home')
