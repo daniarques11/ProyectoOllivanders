@@ -81,79 +81,9 @@ Tasca 5.2 - Web Ollivander's wands shop -->
             </thead>
 
 
-            <tbody>
+            <tbody id="itemsTable">
 
-                <tr>
-                    <th scope="row">1</th>
-                    <td>
-                        <a href="producte.html"><img src="img/Aged-brie.jpg" height="50px"></a>
-                    </td>
-                    <td>
-                        <a href="producte.html">Aged Brie</a>
-                    </td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-
-                <tr>
-                    <th scope="row">2</th>
-                    <td>
-                        <a href="producte.html"><img src="img/Aged-brie.jpg" height="50px"></a>
-                    </td>
-                    <td>
-                        <a href="producte.html">Aged Brie</a>
-                    </td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-
-                <tr>
-                    <th scope="row">3</th>
-                    <td>
-                        <a href="producte.html"><img src="img/Aged-brie.jpg" height="50px"></a>
-                    </td>
-                    <td>
-                        <a href="producte.html">Aged Brie</a>
-                    </td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-
-                <tr>
-                    <th scope="row">4</th>
-                    <td>
-                        <a href="producte.html"><img src="img/Aged-brie.jpg" height="50px"></a>
-                    </td>
-                    <td>
-                        <a href="producte.html">Aged Brie</a>
-                    </td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-
-                <tr>
-                    <th scope="row">5</th>
-                    <td>
-                        <a href="producte.html"><img src="img/Aged-brie.jpg" height="50px"></a>
-                    </td>
-                    <td>
-                        <a href="producte.html">Aged Brie</a>
-                    </td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-
-                <tr>
-                    <th scope="row">6</th>
-                    <td>
-                        <a href="producte.html"><img src="img/Aged-brie.jpg" height="50px"></a>
-                    </td>
-                    <td>
-                        <a href="producte.html">Aged Brie</a>
-                    </td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
+                
             </tbody>
 
         </table>
@@ -164,6 +94,47 @@ Tasca 5.2 - Web Ollivander's wands shop -->
     <footer class="container text-center">
         <p>&copy; 2020 &middot; Daniel Jonathan Zurita Mena, Daniel Arqués Toro&middot;</p>
     </footer>
+    
+    <script>
+        function loadItems() {
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
+
+                var taula = document.getElementById("itemsTable");
+
+                taula.innerHTML = "";
+
+                for (let item in myObj.items) {
+                  var newRow = taula.insertRow(-1);
+                  
+                  var numColumn = newRow.insertCell(0);
+                  var imageColumn = newRow.insertCell(1);
+                  var nameColumn = newRow.insertCell(2);
+                  var sellInColumn = newRow.insertCell(3);
+                  var qualityColumn = newRow.insertCell(4);
+
+                  
+                  numColumn.innerHTML = parseInt(item)+1;
+                  imageColumn.innerHTML = "<img src='"+myObj.items[item].image+"'  alt='...' class='img-fluid' style='max-width: 60px;'/>";
+                  nameColumn.innerHTML = myObj.items[item].name;
+                  sellInColumn.innerHTML = myObj.items[item].sellIn;
+                  qualityColumn.innerHTML = myObj.items[item].quality;
+                }
+                //document.getElementById("demo").innerHTML = myObj.name;
+              }
+            };
+            xmlhttp.open("GET", "items.json", true);
+            xmlhttp.send();
+          }        
+
+        window.onload = function() {
+          loadItems();
+        };
+
+      </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
