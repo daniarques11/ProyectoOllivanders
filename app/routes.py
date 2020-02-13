@@ -1,11 +1,14 @@
 from app import app, bootstrap
 from flask import Flask, render_template
-from GildedRose import logica
+from GildedRose import GildedRose
+from GildedRose import createObjects
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    listaInventario = createItems()
+    tiendaGildedRose = GildedRose(listaInventario)
+    return render_template('index.html', shop=tiendaGildedRose.getInventory())
 
 
 @app.route('/home')

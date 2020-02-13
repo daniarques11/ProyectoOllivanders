@@ -5,19 +5,19 @@
             "name": "Aged Brie",
             "sellIn": 13,
             "quality": 20,
-            "image": "https://manualidadesybellasartes.es/148390-medium_default/varita-magica-madera-natural-273x7x1-cm.jpg"
+            "image": "img/Aged-brie.jpg"
         },
         {
-            "name": "Sulfuras",
+            "name": "Aged Brie",
             "sellIn": 0,
             "quality": 80,
-            "image": "https://manualidadesybellasartes.es/148390-medium_default/varita-magica-madera-natural-273x7x1-cm.jpg"
+            "image": "img/Aged-brie.jpg"
         },
         {
-            "name": "Dexterity Vest",
+            "name": "Aged Brie",
             "sellIn": 5,
             "quality": 15,
-            "image": "https://manualidadesybellasartes.es/148390-medium_default/varita-magica-madera-natural-273x7x1-cm.jpg"
+            "image": "img/Aged-brie.jpg"
         }
     ]
 }
