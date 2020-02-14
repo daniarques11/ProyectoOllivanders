@@ -2,15 +2,21 @@ from app import app, bootstrap
 from flask import Flask, render_template, jsonify
 from GildedRose import GildedRose
 from GildedRose import createObjects
+import json
 
 
 @app.route('/index')
 def index():
+    return render_template('index.html')
+
+
+@app.route('/items')
+def items():
     listaInventario = createObjects.createItems()
     tiendaGildedRose = GildedRose.GildedRose(listaInventario)
     inventarioJSON = {}
     inventarioJSON["items"] = tiendaGildedRose.getInventory()
-    return render_template('index.html', shop=inventarioJSON)
+    return json.dumps(inventarioJSON)
 
 
 @app.route('/home')

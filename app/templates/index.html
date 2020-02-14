@@ -89,9 +89,7 @@ Tasca 5.2 - Web Ollivander's wands shop -->
 
         </table>
     </div>
-    <div>
-        {{ shop }}
-    </div>
+
     <!-- FINAL TABLA -->
 
     <!-- FOOTER -->
@@ -130,7 +128,7 @@ Tasca 5.2 - Web Ollivander's wands shop -->
                 //document.getElementById("demo").innerHTML = myObj.name;
               }
             };
-            xmlhttp.open("GET", "items.json", true);
+            xmlhttp.open("GET", "/items", true);
             xmlhttp.send();
           }        
 
