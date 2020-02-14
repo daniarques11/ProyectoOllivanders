@@ -37,7 +37,7 @@ Tasca 5.2 - Web Ollivander's wands shop -->
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
-            <img src="img/logo.png" style="height: 3vh;"></img>
+            <img  src="{{ url_for('static', filename='img/logo.png') }}" style="height: 3vh;"></img>
             Ollivander's Shop
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -103,13 +103,13 @@ Tasca 5.2 - Web Ollivander's wands shop -->
 
             xmlhttp.onreadystatechange = function() {
               if (this.readyState == 4 && this.status == 200) {
-                var myObj = JSON.parse({{ shop }});
+                var itemsDict = JSON.parse(this.responseText);
 
                 var taula = document.getElementById("itemsTable");
 
                 taula.innerHTML = "";
 
-                for (let item in myObj.items) {
+                for (let item in itemsDict.items) {
                   var newRow = taula.insertRow(-1);
                   
                   var numColumn = newRow.insertCell(0);
@@ -120,12 +120,14 @@ Tasca 5.2 - Web Ollivander's wands shop -->
 
                   
                   numColumn.innerHTML = parseInt(item)+1;
-                  imageColumn.innerHTML = "<img src='img/"+myObj.items[item].name+".jpg'  alt='...' class='img-fluid' style='width: 80px;'/>";
-                  nameColumn.innerHTML = myObj.items[item].name;
-                  sellInColumn.innerHTML = myObj.items[item].sellIn;
-                  qualityColumn.innerHTML = myObj.items[item].quality;
+                  var itemName = itemsDict.items[item].name;
+                  var fileName = "img/" + itemName + ".jpg";
+                  imageColumn.innerHTML = "<img src='static/" + fileName + "'  alt='...' class='img-fluid' style='width: 80px;'/>";
+                  nameColumn.innerHTML = itemsDict.items[item].name;
+                  sellInColumn.innerHTML = itemsDict.items[item].sellIn;
+                  qualityColumn.innerHTML = itemsDict.items[item].quality;
                 }
-                //document.getElementById("demo").innerHTML = myObj.name;
+                //document.getElementById("demo").innerHTML = itemsDict.name;
               }
             };
             xmlhttp.open("GET", "/items", true);
