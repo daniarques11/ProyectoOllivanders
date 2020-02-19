@@ -34,4 +34,6 @@ def backend():
 def insertar():
     return render_template('Backend/insert.html')
 
-
+@app.route('/editar')
+def editar():
+    return render_template('Backend/editar.html')
