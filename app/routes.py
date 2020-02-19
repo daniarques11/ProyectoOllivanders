@@ -24,3 +24,8 @@ def items():
 def update():
     tiendaGildedRose.updateQuality()
     return index()
+
+
+@app.route('/backend')
+def backend():
+    return render_template('Backend/index.html')

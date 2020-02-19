@@ -21,8 +21,8 @@ function loadItems() {
 
                 numColumn.innerHTML = parseInt(item) + 1;
                 var itemName = itemsDict.items[item].name;
-                var fileName = "img/" + itemName + ".jpg";
-                imageColumn.innerHTML = "<img src='static/" + fileName + "'  alt='...' class='img-fluid' style='width: 80px;'/>";
+                var fileName = itemName + ".jpg";
+                imageColumn.innerHTML = "<img src='static/img/" + fileName + "'  alt='...' class='img-fluid' style='width: 80px;'/>";
                 nameColumn.innerHTML = itemsDict.items[item].name;
                 sellInColumn.innerHTML = itemsDict.items[item].sellIn;
                 qualityColumn.innerHTML = itemsDict.items[item].quality;

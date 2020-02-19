@@ -22,7 +22,7 @@ Tasca 5.2 - Web Ollivander's wands shop -->
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
-            <img src="../img/logo.png" style="height: 3vh;"></img>
+            <img src="{{ url_for('static', filename='img/logo.png') }}" style="height: 3vh;"></img>
             Ollivander's Shop - Backend
         </a>
 
@@ -67,91 +67,8 @@ Tasca 5.2 - Web Ollivander's wands shop -->
                 </tr>
             </thead>
 
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td><img src="../img/Aged-brie.jpg" height="50px"></td>
-                    <td>Aged Brie</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>
-                        <!-- Edit and delete buttons -->
-                        <button type="button" class="btn btn-warning" data-toggle="modal"
-                            data-target="#editModal">Editar</button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                            data-target="#deleteModal">Eliminar</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th scope="row">2</th>
-                    <td><img src="../img/Aged-brie.jpg" height="50px"></td>
-                    <td>Aged Brie</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>
-                        <button type="button" class="btn btn-warning" data-toggle="modal"
-                            data-target="#editModal">Editar</button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                            data-target="#deleteModal">Eliminar</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th scope="row">3</th>
-                    <td><img src="../img/Aged-brie.jpg" height="50px"></td>
-                    <td>Aged Brie</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>
-                        <button type="button" class="btn btn-warning" data-toggle="modal"
-                            data-target="#editModal">Editar</button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                            data-target="#deleteModal">Eliminar</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th scope="row">4</th>
-                    <td><img src="../img/Aged-brie.jpg" height="50px"></td>
-                    <td>Aged Brie</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>
-                        <button type="button" class="btn btn-warning" data-toggle="modal"
-                            data-target="#editModal">Editar</button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                            data-target="#deleteModal">Eliminar</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th scope="row">5</th>
-                    <td><img src="../img/Aged-brie.jpg" height="50px"></td>
-                    <td>Aged Brie</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>
-                        <button type="button" class="btn btn-warning" data-toggle="modal"
-                            data-target="#editModal">Editar</button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                            data-target="#deleteModal">Eliminar</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th scope="row">6</th>
-                    <td><img src="../img/Aged-brie.jpg" height="50px"></td>
-                    <td>Aged Brie</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>
-                        <button type="button" class="btn btn-warning" data-toggle="modal"
-                            data-target="#editModal">Editar</button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                            data-target="#deleteModal">Eliminar</button>
-                    </td>
-                </tr>
+            <tbody id="itemsTable">
+                
 
             </tbody>
 
@@ -211,6 +128,8 @@ Tasca 5.2 - Web Ollivander's wands shop -->
     <footer class="container text-center">
         <p>&copy; 2020 &middot; Daniel Jonathan Zurita Mena, Daniel Arqués Toro&middot;</p>
     </footer>
+
+    <script src="{{ url_for('static', filename='itemsLoad.js') }}"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
