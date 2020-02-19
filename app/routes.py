@@ -29,3 +29,9 @@ def update():
 @app.route('/backend')
 def backend():
     return render_template('Backend/index.html')
+
+@app.route('/insert')
+def insertar():
+    return render_template('Backend/insert.html')
+
+
