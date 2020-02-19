@@ -30,9 +30,9 @@ def update():
 def backend():
     return render_template('Backend/index.html')
 
-@app.route('/insert')
+@app.route('/insertar')
 def insertar():
-    return render_template('Backend/insert.html')
+    return render_template('Backend/insertar.html')
 
 @app.route('/editar')
 def editar():
