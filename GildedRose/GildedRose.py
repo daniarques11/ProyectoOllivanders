@@ -1,34 +1,30 @@
 from NormalItem import NormalItem
+import copy
 
 
 class GildedRose:
+
+    registerList = []
 
     def __init__(self,  items):
         self.items = items
 
     def updateQuality(self):
-        for itemClass in self.items:
-            itemClass.updateQuality()
-            itemClass.show()
+        for item in self.items:
+            item.updateQuality()
 
-    def showInventory(self):
-        for itemClass in self.items:
-            itemClass.show()
+    def getInventory(self):
+        inventory = []
+        for item in self.items:
+            itemCopy = copy.deepcopy(item)
+            inventory.append(itemCopy.getItemJSon())
+        return inventory
 
-    def __repr__(self, passed_days):
-        registerDict = {}
-        registerList = []
-        if passed_days == 0:
-            for itemClass in self.items:
-                registerList.append([itemClass.__repr__()])
-            registerDict["DAY 0"] = registerList
-            return registerList
-        else:
-            for day in range(0, (passed_days)):
-                registerDict = {}
-                registerList = []
-                for itemClass in self.items:
-                    itemClass.updateQuality()
-                    registerList.append([itemClass.__repr__()])
-                registerDict["DAY " + str(day + 1)] = registerList
-            return registerDict
+    def updateRegisterList(self, inventory):
+        self.registerList.append(inventory)
+
+    def __repr__(self):
+        shopRepr = ""
+        for item in self.items:
+            shopRepr = shopRepr + str(item) + "\n"
+        return shopRepr

@@ -1,35 +1,40 @@
-<<<<<<< HEAD
-from app import app
-
-@app.route('/')
-@app.route('/index.html')
-
-def index():
-    return "Hello World!"
-=======
 from app import app, bootstrap
-from flask import Flask, render_template
-from GildedRose import logica
+from flask import Flask, render_template, jsonify
+from GildedRose import GildedRose
+from GildedRose import createObjects
+import json
 
+listaInventario = createObjects.createItems()
+tiendaGildedRose = GildedRose.GildedRose(listaInventario)
 
 @app.route('/')
+@app.route('/index')
 def index():
     return render_template('index.html')
 
 
-@app.route('/home')
-def home():
-    return render_template('home.html', home=logica.update(0))
+@app.route('/items')
+def items():
+    inventarioJSON = {}
+    inventarioJSON["items"] = tiendaGildedRose.getInventory()
+    return json.dumps(inventarioJSON)
 
 
 @app.route('/update')
 def update():
-    return '<h1>Bad Request</h1>', 400
+    tiendaGildedRose.updateQuality()
+    return index()
 
 
-@app.route('/update/<day>')
-def update_day(day):
-    if not day:
-        abort(404)
-    return render_template('update.html', day=day, update=logica.update(int(day)))
->>>>>>> a6fea659ffd9a7f9264ac3b72f0373ace29301a0
+@app.route('/backend')
+def backend():
+    return render_template('Backend/index.html')
+
+@app.route('/insertar')
+def insertar():
+    return render_template('Backend/insertar.html')
+
+@app.route('/editar')
+def editar():
+    return render_template('Backend/editar.html')
+

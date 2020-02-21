@@ -1,58 +1,108 @@
-{% extends "bootstrap/base.html" %}
-{% block title %}GILDED ROSE SHOP{% endblock %}
-{% block head %}
-<style>  
-body {
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/0/08/Ollivanders_Wand_Shop%2C_Diagon_Alley_%287119189039%29.jpg");
-    background-size: cover;
-    background-color: #000000;
-}
-.absolute {
-		position: absolute;
-		width:1910px;
-		height:925px;
+<!-- Autores: Daniel Jonathan Zurita Mena, Daniel Arqués Toro
+1r DAW Dual CIFP Francesc de Borja Moll 2019-2020 
+Llenguatge de Marques
+Tasca 5.2 - Web Ollivander's wands shop -->
+
+<!doctype html>
+<html lang="es">
+
+<head>
+
+    <title>Ollivander's Shop</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image" href="img/favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<!-- Hyperlinks style-->
+<style>
+    a {
+        color: yellow;
         text-decoration: none;
-        color: #FFFFFF;
-        font-family: Georgia;
-        font-variant: small-caps;
-        font-size: 22px;
-        text-align: center;
-	}    
-.centrar
-	{
-		position: absolute;
-		/*nos posicionamos en el centro del navegador*/
-        top:50%;
-		left:50%;
-		/*determinamos una anchura*/
-		width:550px;
-		/*indicamos que el margen izquierdo, es la mitad de la anchura*/
-        margin-left:-275px;
-		/*determinamos una altura*/
-		height:150px;
-		/*indicamos que el margen superior, es la mitad de la altura*/
-        margin-top:-75px;
-        padding: 1vw;        
-        background-color: black;
-        opacity: 85%;
-        color: #FFFFFF;
-        font-family: Georgia;
-        font-variant: small-caps;
-        font-size: 22px;
-        text-align: center;
-	}
-</style> 
-{% endblock %}
-{% block body %}
-<body >
-<a class="absolute" href="/home">
-        <div class="centrar">
-          <h1> - Olivander's Shop - </h1>
-          <code>Developed by:</code>
-          <code>Daniel Arqués Toro</code>
-          <code> & </code>
-          <code>Daniel Zurita Mena</code>
+    }
+    
+    a:hover {
+        color: gold;
+        text-decoration: none;
+    }
+</style>
+
+<body style="background-color: #444950;">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" style="height: 3vh;"></img>
+            Ollivander's Shop
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/backend">Backend</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/update">Actualizar día</a>
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
         </div>
-    </a>
+
+    </nav>
+    <!-- FINAL NAVBAR -->
+
+    <!-- TABLA -->
+    <div class="container">
+        <table class="table table-dark">
+
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Sell In</th>
+                    <th scope="col">Quality</th>
+                </tr>
+            </thead>
+
+
+            <tbody id="itemsTable">
+
+
+            </tbody>
+
+        </table>
+    </div>
+
+    <!-- FINAL TABLA -->
+
+    <!-- FOOTER -->
+    <footer class="container text-center">
+        <p>&copy; 2020 &middot; Daniel Jonathan Zurita Mena, Daniel Arqués Toro&middot;</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='itemsLoad.js') }}"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
-{% endblock %}
+
+</html>
